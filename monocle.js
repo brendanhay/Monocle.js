@@ -1,3 +1,9 @@
+//     Monocle.js 0.0.1
+//     (c) 2010 Brendan Hay
+//     Monocle.js may be freely distributed under the MIT license.
+//     For all details and (no) documentation:
+//     http://github.com/brendanhay/Monocle.js
+
 define(['./inflector', './mustache'], function () {
   
     function Monocle(options) {
