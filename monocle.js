@@ -1,6 +1,6 @@
-define(['./inflector'], function () {
+define(['./inflector', './mustache'], function () {
   
-    function Monocole(options) {
+    function Monocle(options) {
         var defaults = {
             // Wrapper into which a preliminary (uncached) template will be rendered
             wrapper: '<p {{attributes}}>{{{partial}}}</p>',
@@ -133,6 +133,6 @@ define(['./inflector'], function () {
         };
     }
 
-    window.monocole = new Monocole();
+    window.monocle = new Monocle();
 
 });
