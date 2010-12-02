@@ -1,31 +1,29 @@
-//     Monocle.js 0.0.1
+﻿//     Monocle.js 0.0.1
 //     (c) 2010 Brendan Hay
-//     Monocle.js may be freely distributed under the MIT license.
-//     For all details and (no) documentation:
-//     http://github.com/brendanhay/Monocle.js
+//     Monocle may be freely distributed under the MIT license.
 
-define(['./inflector', './mustache'], function () {
-  
+define(['./inflector'], function () {
+
     function Monocle(options) {
         var defaults = {
             // Wrapper into which a preliminary (uncached) template will be rendered
             wrapper: '<p {{attributes}}>{{{partial}}}</p>',
             // Partials which are selected based on the result of 'typeof data[key]'
             partials: {
-                string: '<label for="{{id}}">{{name}}</label><input data-bind="{{key}}" id="{{id}}" {{attributes}} type="text" value="{{value}}" />',
-                number: '<label for="{{id}}">{{name}}</label><input data-bind="{{key}}" id="{{id}}" {{attributes}} type="text" value="{{value}}" />',
-                object: '<label for="{{id}}">{{name}}</label><select data-bind="{{key}}" id="{{id}}" {{attributes}} type="text" value="{{value}} />',
-                boolean: '<span><input data-bind="{{key}}" id="{{id}}" {{attributes}} type="checkbox" value="{{value}}" /><label for="{{id}}">{{name}}</label></span>',
+                'string': '<label for="{{id}}">{{name}}</label><input data-bind="{{key}}" id="{{id}}" {{attributes}} type="text" value="{{value}}" />',
+                'number': '<label for="{{id}}">{{name}}</label><input data-bind="{{key}}" id="{{id}}" {{attributes}} type="text" value="{{value}}" />',
+                'object': '<label for="{{id}}">{{name}}</label><select data-bind="{{key}}" id="{{id}}" {{attributes}} type="text" value="{{value}} />',
+                'boolean': '<span><input data-bind="{{key}}" id="{{id}}" {{attributes}} type="checkbox" value="{{value}}" /><label for="{{id}}">{{name}}</label></span>'
             },
             // Attributes (if any) which will be applied to both the wrapper and the partial 
             // (following the same type selection rules as partials)
             attributes: {
-                string: { class: 'text medium' },
-                number: { class: 'text medium' },
-                object: { class: 'text medium' },
-                boolean: { class: 'checkbox' },
+                'string': { 'class': 'text medium' },
+                'number': { 'class': 'text medium' },
+                'object': { 'class': 'text medium' },
+                'boolean': { 'class': 'checkbox' }
             }
-        }
+        };
 
         var settings = $.extend({}, defaults, options),
             cache = {};
@@ -60,7 +58,7 @@ define(['./inflector', './mustache'], function () {
                 partial: function () {
                     return mustache(type, true);
                 }
-            }
+            };
         }
 
         // Render a preliminary template based on the key and typeof value
@@ -81,7 +79,7 @@ define(['./inflector', './mustache'], function () {
             });
 
             return keys.join('');
-        };
+        }
 
         // Creates and inserts or retrieves a template 
         // from the cache for the specified object
